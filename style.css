@@ -65,16 +65,16 @@ h3
   		color:black; 
   		text-align:center; 
 	}
-a2
+.a2
 	{
 		background-color: gray;
 		color:blue;
 	}
-a2:hover
+.a2:hover
 	{
 		color: yellow;
 	}
-a2:visited
+.a2:visited
 	{
 		color: red;
 	}
