@@ -1,0 +1,17 @@
+.high{
+	color: red;
+}
+
+.medium{
+	color: orange;
+}
+
+.low{
+	color: green;
+}
+
+.done{
+	text-decoration: line-through;
+	list-style-image: url("picture_library/checkmark.png");
+	
+}
