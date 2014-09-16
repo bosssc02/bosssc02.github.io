@@ -76,7 +76,11 @@ h3
 	}
 .a2:visited
 	{
-		color:green;
+		color: red
+	}
+.a2:visited:hover
+	{
+		color:yellow;
 	}
 h2
 	{ 
