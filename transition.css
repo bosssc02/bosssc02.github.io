@@ -1,0 +1,16 @@
+#card_container {
+  position: relative;
+  margin: 10px auto;
+  width: 288px;
+  height: 396px;
+}
+#card {
+  transition: all 2.0s linear;
+  -webkit-transition: all 2.0s linear; 
+
+}
+#card_container:hover #card {
+  transform: rotateY(360deg);
+  -webkit-transform: rotateY(360);
+  box-shadow: -5px 5px 5px #aaa;
+}
