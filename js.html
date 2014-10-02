@@ -1,0 +1,159 @@
+<html>
+	<head>
+		<title>JS</title>
+		<style>
+			table, th, td{
+				border: 1px solid black;
+			}
+			table{
+				background-color: white;
+			}
+
+			div{
+				width: 175px;
+			}
+
+			label{
+				float: left;
+			}
+
+			input {
+				float: right;
+			}
+
+			body {
+				background-color: #5B00CA;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			changeColor = function()
+			{
+				red = document.getElementById("redi").value;
+				green = document.getElementById("greeni").value;
+				blue = document.getElementById("bluei").value;
+
+				if (red != parseInt(red) || parseInt(red) < 0 || parseInt(red) > 255)
+				{	
+					if(parseInt(red) < 0 || parseInt(red) > 255)
+					{
+						alert("red must be between 0 and 255");
+					}
+					else
+					{
+						if(red != "")
+						{
+							alert("Input for red is not a number");
+						}
+					}
+
+					document.getElementById("redi").value = "";
+					return;
+				}
+
+				if (green != parseInt(green) || parseInt(green) < 0 || parseInt(green) > 255)
+				{
+					if(parseInt(green) < 0 || parseInt(green) > 255)
+					{
+						alert("green must be between 0 and 255");
+					}
+					else
+					{
+						if(green != "")
+						{
+							alert("Input for green is not a number");	
+						}
+					}
+					
+					document.getElementById("greeni").value = "";
+					return;
+				}
+
+				if (blue != parseInt(blue) || parseInt(blue) < 0 || parseInt(blue) > 255)
+				{
+					if(parseInt(blue) < 0 || parseInt(blue) > 255)
+					{
+						alert("green must be between 0 and 255");
+					}
+					else
+					{
+						if(blue != "")
+						{
+							alert("Input for blue is not a number");
+						}
+					}
+					
+					document.getElementById("bluei").value = "";
+					return;
+				}
+
+				document.body.style.backgroundColor= 'rgb(' + red + ',' + green + ',' + blue + ')';
+				
+			}
+
+			number = 0;
+
+			saveColor = function()
+			{
+
+				red = document.getElementById("redi").value;
+				green = document.getElementById("greeni").value;
+				blue = document.getElementById("bluei").value;
+
+				tr = document.createElement('tr');
+				tr.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+				savedColor = tr.appendChild(document.createElement('td'));
+				savedColor.setAttribute("id", number);
+				hex = tr.appendChild(document.createElement('td'));
+				clickme = tr.appendChild(document.createElement('td'));
+
+				clickme.innerHTML = "<button id='clickit' onclick='seeColor("+ number +");'>See Color</button>";
+				savedColor.innerHTML = "red= " + red + " green= " + green + " blue= " + blue;
+
+				red = parseInt(red);
+				green = parseInt(green);
+				blue = parseInt(blue);
+
+        		hex.innerHTML = "#" + red.toString(16).toUpperCase() + green.toString(16).toUpperCase() + blue.toString(16).toUpperCase();
+
+				document.getElementById("colorTable").appendChild(tr);
+				number++;
+
+			}
+
+			seeColor = function(number)
+			{
+				see = document.getElementById(number).innerText;
+				colorNumbers = see.split(" ");
+				document.getElementById("redi").value = colorNumbers[1];
+				document.getElementById("greeni").value = colorNumbers[3];
+				document.getElementById("bluei").value = colorNumbers[5];
+
+				changeColor();
+			}
+
+
+		</script>
+		
+		<div>
+			<label for="redi">Red</label><input type="range" id="redi" onmousemove="changeColor()" onmouseup="saveColor();" value="255" min="0" max="255"><br>
+		</div>
+		<div>
+			<label for="greeni">Green</label><input type="range" id="greeni" onmousemove="changeColor()" onmouseup="saveColor();" value="255" min="0" max="255"><br>
+		</div>
+		<div>
+			<label for="bluei">Blue</label><input type="range" id="bluei" onmousemove="changeColor()" onmouseup="saveColor();" value="255" min="0" max="255"><br>
+		</div>	
+
+		<br>
+		<table id="colorTable">
+			<th>Saved Colors</th>
+			<tr>
+				<td>RGB Color</td><td>Hex Color</td><td>See Color</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

@@ -1,0 +1,67 @@
+<html>
+   <head>
+     <style>
+     	 section {
+     	 	text-align: left;
+     	 	width: 100%;
+     	 	background: lightblue;
+     	 }
+         ul {
+             display: inline;
+             margin: 0;
+             padding: 15px 4px 17px 0;
+         }
+         
+         ul li{
+           display: inline-block; 
+           position: relative;
+           padding: 15px 50px;
+           margin-right: -4px;
+           background: lightblue;
+           width: 50px;
+
+         }
+         
+         ul li:hover{
+            background: #cccccc;
+         }
+         
+         ul li ul {
+            position: absolute;
+            right: -4px;
+            width: 150px;
+            display: none; 
+         }
+
+        ul li ul li { 
+		  background-color: gray;
+		  display: block; 
+		  
+		}
+			
+		ul li ul li:hover { 
+		  background: lightgray; 
+		} 
+
+		ul li:hover ul{
+			display: block;
+		}
+
+     </style>
+   </head>
+   <body>
+      <h1>Exercise 8</h1>
+      <ul>
+	         <li class="navbar"><a href="index.html">Home</a></li>
+	         <li class="navbar"><a href="classes.html">Classes</a></li>
+	         <li class="navbar"><a href="experiences.html">Past Experiences</a></li>
+	         <li class="navbar"><a href="experiences.html">Past Experiences</a></li>
+	         <li class="navbar">Inclass Work
+	            <ul>
+	               <li><a href="exercises8.html">exercises8</a></li>
+	               <li><a href="card.html">card</a></li>
+	               <li><a href="hellojs.html">hellojs</a></li>
+	            </ul></li>
+	         <li><a href="contact.html">Contact</a></li>   	
+   </body>
+</html>

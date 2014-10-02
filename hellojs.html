@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>HelloWorld Javascript</title>
+	</head>
+
+	<body>
+
+		<script type="text/Javascript">
+			
+			hold = 0;
+			hellofunc = function()
+			{
+				mySpan = document.getElementById("hello");
+				mySpan.innerHTML = "Hello World!! Font Size: "+hold;
+				mySpan.style.color = "red";
+				mySpan.style.fontSize = hold;
+				hold++;
+			}
+
+			hello2func = function()
+			{
+				mySpan = document.createElement('p');
+				mySpan.innerHTML = "HelloWorld!! Font Size: "+hold;
+				mySpan.style.color = "red";
+				mySpan.style.fontSize = hold;
+				document.body.appendChild(mySpan);
+				hold++;
+			}
+
+		</script>
+		<button onclick="hello2func();">Click Me</button>
+		<!--<p><span id="hello"></span></p>-->
+	</body>
+
+</html>
