@@ -16,9 +16,14 @@
 				list-style-type: none;
 			}
 
+			.crossout{
+				text-decoration: line-through;
+				list-style-image: url("picture_library/checkmark.png");
+			}
+
 			#taskDiv{
 				width: 100%;
-				min-height: 100px;
+				min-height: 50px;
 				border: 1px solid black;
 
 			}
@@ -30,15 +35,81 @@
 		<script type="text/Javascript">
 			addTask = function()
 			{
-				li = document.createElement('li')
-				label = document.createElement('label')
-				task = document.createElement('input');
-				label.innerHTML = document.getElementById("newTask").value;
-				task.setAttribute("type", "checkbox");
-				label.appendChild(task);
-				li.appendChild(label)
+				if(document.getElementById("newTask").value != "")
+				{	
+					li = document.createElement('li');
+					label = document.createElement('label');
+					task = document.createElement('input');
+					label.innerHTML = document.getElementById("newTask").value;
+					task.setAttribute("type", "checkbox");
+					task.setAttribute("onclick", "checktask(this)");
+					label.appendChild(task);
+					li.appendChild(label);
 
-				document.getElementById("taskUl").appendChild(li);
+					document.getElementById("taskUl").appendChild(li);
+
+					localSave();
+				}	
+			}
+
+			checktask = function(taskbox)
+			{	
+				node1 = taskbox.parentNode;
+
+				if(taskbox.checked == true)
+				{
+					node1.parentNode.className = "crossout";
+				}
+				else
+				{
+					node1.parentNode.className = "";
+				}
+
+				localSave();
+				
+				
+			}
+
+			entertask = function(e)
+			{
+				if(e.keyCode === 13)
+				{
+					//document.getElementById("enterTask").click();
+					addTask();
+				}
+			}
+
+			localSave = function()
+			{
+				res = [];
+				var i;
+				allEntries = document.querySelectorAll('li');
+				for(i=0; i < allEntries.length; i++)
+				{
+					if(allEntries[i].className != "crossout")
+					{
+						res.push(allEntries[i].innerHTML);
+					}
+				}
+				console.log(res);
+				//store the array in localstorage
+				localStorage.setItem("todoDatabase",JSON.stringify(res));
+
+			}
+
+			window.onload = function()
+			{
+				recover = localStorage.getItem("todoDatabase");
+				recover = JSON.parse(recover);
+
+				var i;
+				for(i=0; i < recover.length; i++)
+				{
+					li = document.createElement('li');
+					recoverTask = recover[i];
+					li.innerHTML = recoverTask;
+					document.getElementById("taskUl").appendChild(li);
+				}
 
 			}
 
@@ -51,8 +122,9 @@
 				</ul>
 			</div>
 
-			<label for="newTask">New Task</label><input id="newTask" type="text"><br>
-			<button onclick="addTask();">Add</button>
+			<br/>
+			<label for="newTask">New Task</label><input id="newTask" type="text" onkeypress="entertask(event)"><br>
+			<button id="enterTask" onclick="addTask();">Add</button>
 		</div>
 	</body>
 
